@@ -4,45 +4,53 @@
 
 // Declares function
 float GetPositiveFloat();
-float change;
 
 // Actual program
 int main(void)
 {
   int coins = 0;
-  GetPositiveFloat();
-  // printf("Change Owed is: %.2f\n", change);
 
-  while (change > 0.0000)
+  // printf("Change Owed is: %.2f\n", change);
+  float change = GetPositiveFloat();
+  int cents = (int) (change*100);
+
+  /** Uncomment for debugging
+   *  printf("Change: %f\n", change);
+   * printf("Cents: %i\n", cents);
+   */
+
+  while (cents > 0)
   {
-    if (change >= .25)
+    if (cents >= 25)
     {
-      change = change - .25;
+      cents = cents - 25;
       coins++;
     }
-    else if (change >= .10 && change < .25)
+    else if (cents >= 10 && cents < 25)
     {
-      change = change - .10;
+      cents = cents - 10;
       coins++;
     }
-    else if (change >= .05 && change < .10)
+    else if (cents >= 5 && cents < 10)
     {
-      change = change - .05;
+      cents = cents - 5;
       coins++;
     }
-    else if (change >= .01 && change < .05)
+    else if (cents >= 1 && cents < 5)
     {
-      change = change - .01;
+      cents = cents - 1;
       coins++;
     }
-    else if (change > 0.00 && change < .01)
+    else if (cents > 0 && cents < 1)
     {
       printf("ERROR\n");
       break;
     }
 
-    printf("Coins: %i\n", coins);
-    printf("Change left: %f\n", change);
+    /** Uncomment for debugging
+     *  printf("Coins: %i\n", coins);
+     *  printf("Change left: %i cents\n", cents);
+     */
   }
   printf("Your change will contain %d coins.\n", coins);
 }
@@ -52,6 +60,8 @@ int main(void)
  */
 float GetPositiveFloat()
 {
+  float change;
+
   do
   {
     printf("How much change is owed?\n");
