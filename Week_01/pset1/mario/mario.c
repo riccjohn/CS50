@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <cs50.h>
-//begin code
+
 int main(void)
 {
 	/*
@@ -17,13 +17,17 @@ int main(void)
 	Build pyramid
 	*/ 
 	{
-	for (int i = 0; i < height; i++)
-		{
-		for (int i = 0; i < height; i++)
-	    		{
-	    		printf("#");
- 			}
-        	printf("\n");
-    		}
+	    for (int i = 0; i < height; i++)
+	    {   
+	        for (int j = 0; j < ((height + 1) - (i + 2)); j++)
+		    {
+		        printf(" ");
+		    }
+		    for (int k = 0; k < i + 2; k++)
+		    {
+		        printf("#");
+		    }
+		    printf("\n");
+        }
 	}
 }
