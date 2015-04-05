@@ -6,23 +6,12 @@ int main(void)
 {
     printf("Encryption Key: ");
     int key = GetInt();
-    if (key >= 0 && key <= 26)
+    printf("Initial Key set to %i\n", key);
+
+    if (key > 26)
     {
-      printf("Key set to %i\n", key);
-    }
-    else if (key > 26)
-    {
-      printf("Initial key set to %i\n", key);
-      do
-      {
-        key = key - 26;
-      }
-      while (key > 26);
+      key = key - 26;
       printf("Looped Key: %i", key);
-    }
-    else if (key <0)
-    {
-      return 1;
     }
     printf("\n");
     printf("Input message to be encrypted:\n");
