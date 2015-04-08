@@ -34,17 +34,10 @@ int main(int argc, char* argv[])
     printf("Encrypted Message:\n");
 
     // Add key value to original plaintext char value
-    // Still need to figure out how to get characters to not go past 'z' or 'Z'j
-    // Maybe another 'if' resulting value is <z || <Z, - 26
-
     for (int i = 0, n = strlen(s); i < n; i++)
     {
       // if character is a letter, add key to it
       if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
-      /* {
-      **  printf("%c", s[i] + key);
-      ** }
-      */
         {
           char enchar = s[i] + key;
           // if character + key is now a number or symbol, loop back to letters
