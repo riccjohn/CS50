@@ -2,8 +2,10 @@
 #include <string.h>
 #include <cs50.h>
 
-int main(void)
+int main(int argc, string argv[])
 {
+  if (argc == 2)
+  {
     printf("Encryption Key: ");
     int key = GetInt();
     if (key >= 0 && key <= 26)
@@ -30,6 +32,9 @@ int main(void)
     printf("\n");
     printf("Encrypted Message:\n");
 
+    // Add key value to original plaintext char value
+    // Still need to figure out how to get characters to not go past 'z' or 'Z'j
+    // Maybe another 'if' resulting value is <z || <Z, - 26
     for (int i = 0, n = strlen(s); i < n; i++)
     {
       if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
@@ -44,4 +49,10 @@ int main(void)
     printf("\n");
     printf("\n");
     return 0;
+  }
+  else
+  {
+    printf("Error: Please input non-negative integer as argument.\n");
+    return 1;
+  }
 }
