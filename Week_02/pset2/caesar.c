@@ -3,14 +3,10 @@
 #include <cs50.h>
 
 int main(int argc, char* argv[])
-//int main(void)
 {
   if (argc == 2)
   {
-    // printf("Encryption Key: ");
-    // int key = GetInt();
     string k = argv[1];
-    // convert argv string to an int
     int key = atoi(k);
     if (key >= 0 && key <= 26)
     {
@@ -26,8 +22,9 @@ int main(int argc, char* argv[])
       while (key > 26);
       printf("Looped Key: %i", key);
     }
-    else if (key <0)
+    else if (key < 0)
     {
+      printf("Key must be a positive integer.\n");
       return 1;
     }
     printf("\n");
@@ -42,10 +39,28 @@ int main(int argc, char* argv[])
 
     for (int i = 0, n = strlen(s); i < n; i++)
     {
+      // if character is a letter, add key to it
       if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
-      {
-        printf("%c", s[i] + key);
-      }
+      /* {
+      **  printf("%c", s[i] + key);
+      ** }
+      */
+        {
+          char enchar = s[i] + key;
+          // if character + key is now a number or symbol, loop back to letters
+          if ((enchar > 'Z' && enchar < 'a') || (enchar > 'z'))
+          {
+            do
+            {
+              enchar = enchar - 26;
+            }
+            while ((enchar > 'Z' && enchar < 'a') || (enchar > 'z'));
+            printf("%c", enchar);
+          }
+          else
+          printf("%c", enchar);
+        }
+      // if character is not a-z or A-Z (a space or non alphabetic character), just print it
       else
       {
         printf("%c", s[i]);
