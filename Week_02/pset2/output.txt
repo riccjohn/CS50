@@ -1,0 +1,7 @@
+Initial Key: 69
+Looped Key: 17
+
+Input message to be encrypted:
+
+Encrypted Message: Kyz„ z„ r …v„…
+

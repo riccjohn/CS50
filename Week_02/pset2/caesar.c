@@ -7,7 +7,8 @@ int main(int argc, char* argv[])
   if (argc == 2)
   {
     string k = argv[1];
-    int key = atoi(k);
+    int key;
+    key = atoi(k);
     if (key >= 0 && key <= 26)
     {
       printf("Key set to %i\n", key);
